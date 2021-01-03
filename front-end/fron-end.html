@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        const url = "https://cloudapiagain.azurewebsites.net/Items/count";
+        const Http = new XMLHttpRequest();
+        let num;
+        function call_api() {
+            Http.open("GET", url);
+            Http.send();
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+                num = Http.responseText;
+                getNum();
+            }
+        }
+       
+
+       
+       
+        function getNum() {
+           
+            document.getElementById("prm").innerHTML = "number of items uploaded to blob:"+ num;
+        }
+    </script>
+</head>
+<body onload="call_api()">
+    <p  id="prm" >  </p>
+</body>
+</html>
